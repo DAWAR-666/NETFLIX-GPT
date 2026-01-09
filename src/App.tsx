@@ -6,7 +6,7 @@ function App() {
 
 
   return (
-      <div>
+      <div className="flex justify-center items-center h-screen w-screen bg-black text-white">
         hello world
       </div>
   )
