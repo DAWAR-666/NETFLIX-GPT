@@ -1,7 +1,10 @@
+import Header from "./Header"
+import { bgImg } from "../Utils/Const"
 const Login = () => {
     return (
         <div >
-            Login Component
+            <Header/>
+            <img src={bgImg} alt="bgImg" />
         </div>
     )
 }

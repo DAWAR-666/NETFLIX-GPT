@@ -1,7 +1,8 @@
+import { nLogo } from "../Utils/Const";
 const Header = () => {
     return (
-        <div >
-            Header Component
+        <div>
+            <img src= {nLogo} alt="logo" />
         </div>
     )
 }
