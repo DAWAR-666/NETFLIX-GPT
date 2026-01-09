@@ -12,7 +12,7 @@ const Login = () => {
             <div className="absolute">
                 <img src={bgImg} alt="bgImg" />
             </div>
-            <form className="w-3/12 absolute bg-black/75 text-white my-30 mx-auto left-0 right-0  p-10 rounded-lg">
+            <form onSubmit={(e)=>{e.preventDefault()}} className="w-3/12 absolute bg-black/75 text-white my-30 mx-auto left-0 right-0  p-10 rounded-lg">
                 <h1 className="text-3xl font-bold my-4" >{isSignedIn ? "Sign In" : "Sign Up"}</h1>
                 {!isSignedIn && (<input type="text" 
                     placeholder="Full Name" 
