@@ -1,10 +1,24 @@
 import Header from "./Header"
 import { bgImg } from "../Utils/Const"
-import { useState } from "react";
+import { useRef, useState } from "react";
+import validate from "../Utils/validate";
 const Login = () => {
     const [isSignedIn, setIsSignedIn] = useState(true);
+    const [errorMsg,setErrorMsg]=useState<string>("");
+    const mail=useRef<HTMLInputElement | null>(null);
+    const pswd=useRef<HTMLInputElement | null>(null);
     const toggleForm = () => {
         setIsSignedIn(!isSignedIn);
+    }
+    const handleButtonClick = () => {
+        const email=(mail?.current as HTMLInputElement)?.value;
+        const password=(pswd?.current as HTMLInputElement)?.value;
+        const validationMessage :string=validate(email,password);
+        if (validationMessage===""){
+            setErrorMsg("");
+        } else {
+            setErrorMsg(validationMessage);
+        }
     }
     return (
         <div>
@@ -23,7 +37,9 @@ const Login = () => {
                                 cursor-pointer 
                                 bg-gray-700 
                                 rounded-lg"/>)}
-                <input type="text" 
+                <input 
+                    ref={mail}
+                    type="text" 
                     placeholder="Email Address" 
                     className="p-4 
                                 my-4 
@@ -32,8 +48,23 @@ const Login = () => {
                                 cursor-pointer 
                                 bg-gray-700 
                                 rounded-lg"/>
-                <input type="password" placeholder="Password" className="p-4 my-4 mx-auto w-full cursor-pointer bg-gray-700 rounded-lg"/>
-                <button className="p-6 my-4 mx-auto bg-red-900 rounded-lg w-full cursor-pointer">{isSignedIn ? "Sign In" : "Sign Up"}</button>
+                <input  
+                    ref={pswd}
+                    type="password" 
+                    placeholder="Password" 
+                    className="p-4 my-4 mx-auto w-full cursor-pointer bg-gray-700 rounded-lg"/>
+                <p className="text-red-500">{errorMsg}</p>
+                <button 
+                    className="p-6 
+                                my-4 
+                                mx-auto 
+                                bg-red-900 
+                                rounded-lg 
+                                w-full 
+                                cursor-pointer"
+                    onClick={handleButtonClick}>
+                    {isSignedIn ? "Sign In" : "Sign Up"}
+                </button>
                 <p className="my-4 cursor-pointer" onClick={toggleForm}>
                     {isSignedIn ? "New to Netflix? Sign Up now" : "Already have an account? Sign In"}
                     </p>
@@ -41,4 +72,4 @@ const Login = () => {
         </div>
     )
 }
-export default Login
+export default Login;
