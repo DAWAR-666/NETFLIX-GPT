@@ -25,7 +25,6 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
-                    // ...
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -38,7 +37,6 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    // ...
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -84,6 +82,7 @@ const Login = () => {
                     className="p-4 my-4 mx-auto w-full cursor-pointer bg-gray-700 rounded-lg"/>
                 <p className="text-red-500">{errorMsg}</p>
                 <button 
+                    type="button"
                     className="p-6 
                                 my-4 
                                 mx-auto 

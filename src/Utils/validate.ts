@@ -9,6 +9,6 @@ const validate =(email:string,pswd:string):string=>{
     } else if (!pswdRegex.test(pswd)){
         return "Password must be at least 8 characters long and contain at least one letter and one number.";
     }
-    return "Invalid input.";
+    return "";
 };
 export default validate;
