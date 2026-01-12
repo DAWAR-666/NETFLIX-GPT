@@ -3,20 +3,25 @@ import { bgImg } from "../Utils/Const"
 import { useRef, useState } from "react";
 import validate from "../Utils/validate";
 
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../Utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../Utils/userSlice";
 
 const Login = () => {
+    const dispatch=useDispatch();
     const navigate=useNavigate();
     const [isSignedIn, setIsSignedIn] = useState(true);
     const [errorMsg,setErrorMsg]=useState<string>("");
+    const name=useRef<HTMLInputElement | null>(null);
     const mail=useRef<HTMLInputElement | null>(null);
     const pswd=useRef<HTMLInputElement | null>(null);
     const toggleForm = () => {
         setIsSignedIn(!isSignedIn);
     }
     const handleButtonClick = () => {
+        const fullName=(name?.current as HTMLInputElement)?.value;
         const email=(mail?.current as HTMLInputElement)?.value;
         const password=(pswd?.current as HTMLInputElement)?.value;
         const validationMessage :string=validate(email,password);
@@ -27,7 +32,19 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
-                    navigate("/browse");
+                    updateProfile(user, {
+                        displayName: fullName
+                        }).then(() => {
+                        // Profile updated!
+                        // ...
+                        const { uid , email ,displayName} = auth.currentUser;
+                        dispatch(addUser({uid:uid,email:email,displayName:displayName}));
+                        navigate("/browse");
+                        }).catch((error) => {
+                        // An error occurred
+                        // ...
+                        });
+                    
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -59,7 +76,9 @@ const Login = () => {
             </div>
             <form onSubmit={(e)=>{e.preventDefault()}} className="w-3/12 absolute bg-black/75 text-white my-30 mx-auto left-0 right-0  p-10 rounded-lg">
                 <h1 className="text-3xl font-bold my-4" >{isSignedIn ? "Sign In" : "Sign Up"}</h1>
-                {!isSignedIn && (<input type="text" 
+                {!isSignedIn && (<input 
+                    ref={name}
+                    type="text" 
                     placeholder="Full Name" 
                     className="p-4 
                                 my-4 
