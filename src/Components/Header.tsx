@@ -3,7 +3,12 @@ import { nLogo } from "../Utils/Const";
 import { auth } from "../Utils/firebase";
 import { signOut } from "firebase/auth";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../Utils/userSlice";
 const Header = () => {
+    const dispatch=useDispatch();
     const user=useSelector(store=>store.user)
     const navigate=useNavigate();
   const handleSignOut=()=>{
@@ -15,6 +20,18 @@ const Header = () => {
       // An error happened.
     });
 }
+useEffect(()=>{
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                const { uid , email ,displayName} = user;
+                dispatch(addUser({uid:uid,email:email,displayName:displayName}));
+            } else {
+                // User is signed out
+                dispatch(removeUser(null));
+            }
+            });
+    },[])
     return (
         
         <div className="absolute px-8 py-2 bg-linear-to-b from-black w-full z-10 flex justify-between">
