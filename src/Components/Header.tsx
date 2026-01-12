@@ -12,9 +12,7 @@ const Header = () => {
     const user=useSelector(store=>store.user)
     const navigate=useNavigate();
   const handleSignOut=()=>{
-    console.log("Signing out");
     signOut(auth).then(() => {
-      navigate("/");
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.
@@ -26,9 +24,11 @@ useEffect(()=>{
                 // User is signed in
                 const { uid , email ,displayName} = user;
                 dispatch(addUser({uid:uid,email:email,displayName:displayName}));
+                navigate("/browse");
             } else {
                 // User is signed out
                 dispatch(removeUser(null));
+                navigate("/");
             }
             });
     },[])
