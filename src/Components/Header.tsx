@@ -19,7 +19,7 @@ const Header = () => {
     });
 }
 useEffect(()=>{
-        onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 // User is signed in
                 const { uid , email ,displayName} = user;
@@ -31,6 +31,7 @@ useEffect(()=>{
                 navigate("/");
             }
             });
+            return ()=>unsubscribe();
     },[])
     return (
         
