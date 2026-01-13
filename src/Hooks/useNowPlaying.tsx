@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+
 import { APIoptions } from "../Utils/Const";
 
 const getNowPlaying=async()=>{
@@ -7,7 +7,4 @@ const getNowPlaying=async()=>{
     const jsonData=await data.json();
     console.log(jsonData);
   }
-  useEffect(()=>{
-    getNowPlaying();
-  },[])
   export default getNowPlaying;
