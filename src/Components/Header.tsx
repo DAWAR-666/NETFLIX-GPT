@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../Utils/userSlice";
+import { toggleGptButton } from "../Utils/gptSlice";
 const Header = () => {
     const dispatch=useDispatch();
     const user=useSelector(store=>store.user)
@@ -19,7 +20,7 @@ const Header = () => {
     });
   }
   const handleGptPage=()=>{
-    
+    dispatch(toggleGptButton());
   }
 useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (user) => {
