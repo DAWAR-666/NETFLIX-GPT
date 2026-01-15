@@ -1,24 +1,13 @@
-import { useEffect } from "react";
-import { APIoptions } from "../Utils/Const";
-import { useDispatch, useSelector } from "react-redux";
-import { addTrailerVideoId } from "../Utils/movieSlice";
+
+
+import { useSelector } from "react-redux";
+import useGetTrailer from "../Hooks/useGetTrailer";
 interface VidBgProps {
     Mid: number;
 }
 const VidBg: React.FC<VidBgProps> = ({Mid}) => {
     const TrailerKey=useSelector((store:any)=>store.movies?.trailerVideoId);
-    const dispatch=useDispatch();
-    const getTrailer=async() => {
-        const data=await fetch(`https://api.themoviedb.org/3/movie/${Mid}/videos?language=en-US`, APIoptions)
-        const jsonData=await data.json();
-        const trailers = jsonData.results.filter((video: { type: string; }) => video.type === "Trailer");
-        const toPlay=trailers.length? trailers[0]:"";
-        dispatch(addTrailerVideoId(toPlay.key));
-
-    }
-    useEffect(()=>{
-        getTrailer();
-    },[Mid])
+   useGetTrailer(Mid);
     return (
         <div>
             <iframe 
