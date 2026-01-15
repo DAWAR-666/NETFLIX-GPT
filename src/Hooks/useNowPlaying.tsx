@@ -11,7 +11,6 @@ const useNowPlaying=()=>{
         ,APIoptions);
     const jsonData=await data.json();
     dispatch(addNowMovies(jsonData.results));
-    console.log(jsonData.results);
   }
   useEffect(()=>{
     getNowPlaying();

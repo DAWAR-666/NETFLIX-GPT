@@ -11,7 +11,6 @@ const MainCont = () => {
     if (!movies || movies.length === 0) return <div>Loading...</div>;
     const randomIndex = Math.floor(Math.random() * movies.length);
     const selectedMovie = movies[randomIndex];
-    console.log("Selected Movie:", selectedMovie);
     const {title, overview,id}:Movie= selectedMovie;
     
   return (
