@@ -1,6 +1,9 @@
 import { useState } from "react";
-
-const VidTitle = ({title, overview}) => {
+interface VidTitleProps {
+  title: string;
+  overview: string;
+}
+const VidTitle: React.FC<VidTitleProps> = ({title, overview}) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const isLongText = overview?.length > 100;
     return (
