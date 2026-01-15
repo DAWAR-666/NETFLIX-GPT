@@ -39,8 +39,8 @@ useEffect(()=>{
             <img src= {nLogo} alt="logo"
             className="w-48 " />
         { user &&(<div className="my-3 mx-10 flex">
-          <img className="w-10 h-10 " src={userLogo} alt="userlogo" />
-          <button className="mx-3 bg-red-400 rounded-lg p-2 h-10"
+          <img className="w-10 h-10 cursor-pointer" src={userLogo} alt="userlogo" />
+          <button className="mx-3 bg-red-400 rounded-lg p-2 h-10 cursor-pointer"
           onClick={handleSignOut}>SIGN OUT</button>
         </div>)}
         </div>
