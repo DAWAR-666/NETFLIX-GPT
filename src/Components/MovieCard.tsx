@@ -1,7 +1,12 @@
+import { imgUrl } from "../Utils/Const"
+const MovieCard = ({movie}) => {
 
-const MovieCard = () => {
   return (
-    <div>MovieCard</div>
+    <div className="m-2 shrink-0">
+        <img className="w-40 rounded-md " 
+        src={imgUrl+movie.poster_path} 
+        alt={movie.title} />
+    </div>
   )
 }
 
