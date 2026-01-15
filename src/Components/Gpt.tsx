@@ -1,8 +1,13 @@
+import GptSearchBar from "./GptSearchBar"
+import GptSuggestions from "./GptSuggestions"
 
 
 const Gpt = () => {
   return (
-    <div>Gpt</div>
+    <div>
+        <GptSearchBar />
+        <GptSuggestions />
+    </div>
   )
 }
 
