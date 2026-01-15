@@ -17,7 +17,10 @@ const Header = () => {
     }).catch((error) => {
       // An error happened.
     });
-}
+  }
+  const handleGptPage=()=>{
+    
+  }
 useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -39,6 +42,10 @@ useEffect(()=>{
             <img src= {nLogo} alt="logo"
             className="w-48 " />
         { user &&(<div className="my-3 mx-10 flex">
+          <button className="mx-3 bg-red-400 rounded-lg p-2 h-10 cursor-pointer"
+              onClick={handleGptPage}>
+              GPT SEARCH
+            </button>
           <img className="w-10 h-10 cursor-pointer" src={userLogo} alt="userlogo" />
           <button className="mx-3 bg-red-400 rounded-lg p-2 h-10 cursor-pointer"
           onClick={handleSignOut}>SIGN OUT</button>
