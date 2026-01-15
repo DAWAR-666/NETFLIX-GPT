@@ -11,6 +11,7 @@ import { toggleGptButton } from "../Utils/gptSlice";
 const Header = () => {
     const dispatch=useDispatch();
     const user=useSelector(store=>store.user)
+    const showgptbtn=useSelector(store=>store.gptview.GptButton)
     const navigate=useNavigate();
   const handleSignOut=()=>{
     signOut(auth).then(() => {
@@ -45,7 +46,7 @@ useEffect(()=>{
         { user &&(<div className="my-3 mx-10 flex">
           <button className="mx-3 bg-red-400 rounded-lg p-2 h-10 cursor-pointer"
               onClick={handleGptPage}>
-              GPT SEARCH
+              {showgptbtn ? "HOME" : "GPT Search"}
             </button>
           <img className="w-10 h-10 cursor-pointer" src={userLogo} alt="userlogo" />
           <button className="mx-3 bg-red-400 rounded-lg p-2 h-10 cursor-pointer"
