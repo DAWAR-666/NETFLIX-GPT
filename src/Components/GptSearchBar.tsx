@@ -1,8 +1,11 @@
+import { useDispatch } from "react-redux";
 import { APIoptions } from "../Utils/Const";
 import client from "./gemini";
 import { useRef } from "react"
+import { addMoviesToList } from "../Utils/gptSlice";
 
 const GptSearchBar = () => {
+    const dispatch = useDispatch();
     const searchText=useRef(null);
     const searchMovieTMDB=async(movie : string)=>{
         const data=await fetch('https://api.themoviedb.org/3/search/movie?query='
@@ -23,6 +26,9 @@ const GptSearchBar = () => {
             const text = response.text();
             const movieResult=text.split(",");
             console.log(text);
+            const movieDataPromises = movieResult.map((movie: string) => searchMovieTMDB(movie.trim()));
+            const movieDataArrays = await Promise.all(movieDataPromises);
+            dispatch(addMoviesToList({movieNames:movieResult,movieList:movieDataArrays}));
         } catch (error) {
             console.error("Gemini SDK Error:", error);
         }
