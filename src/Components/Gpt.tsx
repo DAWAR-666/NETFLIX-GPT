@@ -7,7 +7,7 @@ const Gpt = () => {
   return (
     <div>
         <div className="fixed ">
-            <img src={bgImg} alt="bgImg" className="h-screen w-screen" />
+            <img src={bgImg} alt="bgImg" className="object-cover w-screen h-screen" />
         </div>
         <div className="relative bg-linear-to-t from-black/30 to-black/70 h-screen">
         <GptSearchBar />

@@ -10,4 +10,4 @@ export const APIoptions = {
   }
 };
 export const imgUrl:string="https://image.tmdb.org/t/p/w500";
-export const gptApiKey:string=import.meta.env.VITE_gptApiKey;
+export const gptApiKey=import.meta.env.VITE_gptApiKey;
