@@ -1,9 +1,16 @@
+import { APIoptions } from "../Utils/Const";
 import client from "./gemini";
 import { useRef } from "react"
 
 const GptSearchBar = () => {
     const searchText=useRef(null);
-
+    const searchMovieTMDB=async(movie : string)=>{
+        const data=await fetch('https://api.themoviedb.org/3/search/movie?query='
+                +movie+
+                '&include_adult=false&language=en-US&page=1', APIoptions)
+        const json=await data.json();
+        return json.results;
+    };
 
     const handleGptSearch = async () => {
 
