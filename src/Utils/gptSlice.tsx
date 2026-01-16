@@ -9,7 +9,7 @@ const gptSlice=createSlice({
         movieNamesResult:null,
     },
     reducers:{
-        toggleGptButton:(state,action)=>{
+        toggleGptButton:(state)=>{
             state.GptButton=!state.GptButton;
         },
         addMoviesToList:(state,action)=>{
