@@ -26,7 +26,7 @@ const GptSearchBar = () => {
             const response = await result.response;
             const text = response.text();
             const movieResult=text.split(",");
-            console.log(text);
+            
             const movieDataPromises = movieResult.map((movie: string) => searchMovieTMDB(movie.trim()));
             const movieDataArrays = await Promise.all(movieDataPromises);
             dispatch(addMoviesToList({movieNames:movieResult,movieList:movieDataArrays}));
