@@ -35,12 +35,10 @@ const Login = () => {
                         }).then(() => {
                         // Profile updated!
                         // ...
-                        const { uid , email ,displayName} = auth.currentUser;
-                        dispatch(addUser({uid:uid,email:email,displayName:displayName}));
-                        }).catch((error) => {
-                        // An error occurred
-                        // ...
-                        });
+                        if(auth.currentUser){
+                            const { uid , email ,displayName} = auth.currentUser;
+                            dispatch(addUser({uid:uid,email:email,displayName:displayName}));   
+                        }})
                     
                 })
                 .catch((error) => {
@@ -51,9 +49,9 @@ const Login = () => {
         }
         else{
             signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
+                .then((_userCredential) => {
                     // Signed in 
-                    const user = userCredential.user;
+                    //const user = userCredential.user;
                 })
                 .catch((error) => {
                     const errorCode = error.code;

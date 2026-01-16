@@ -8,15 +8,16 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../Utils/userSlice";
 import { toggleGptButton } from "../Utils/gptSlice";
+import type { RootState } from "../Utils/appStore";
 const Header = () => {
     const dispatch=useDispatch();
-    const user=useSelector(store=>store.user)
-    const showgptbtn=useSelector(store=>store.gptview.GptButton)
+    const user=useSelector((store:RootState)=>store.user)
+    const showgptbtn=useSelector((store:RootState)=>store.gptview.GptButton)
     const navigate=useNavigate();
   const handleSignOut=()=>{
     signOut(auth).then(() => {
       // Sign-out successful.
-    }).catch((error) => {
+    }).catch((_error) => {
       // An error happened.
     });
   }
@@ -32,7 +33,7 @@ useEffect(()=>{
                 navigate("/browse");
             } else {
                 // User is signed out
-                dispatch(removeUser(null));
+                dispatch(removeUser());
                 navigate("/");
             }
             });

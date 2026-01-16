@@ -6,7 +6,7 @@ import { addMoviesToList } from "../Utils/gptSlice";
 
 const GptSearchBar = () => {
     const dispatch = useDispatch();
-    const searchText=useRef(null);
+    const searchText=useRef<HTMLInputElement | null>(null);
     const searchMovieTMDB=async(movie : string)=>{
         const data=await fetch('https://api.themoviedb.org/3/search/movie?query='
                 +movie+
@@ -15,11 +15,11 @@ const GptSearchBar = () => {
         return json.results;
     };
 
-    const handleGptSearch = async (e) => {
+    const handleGptSearch = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const query = "act as a movie recommendation engine and recommend only 5 movies based on the user's query: " + searchText?.current?.value + ". only respond with the movie titles separated by commas.and only give 5 titles.";
-        searchText.current.value = "";
+        if (searchText.current) searchText.current.value = "";
         try {
             // Change: Use generateContent instead of chat.completions.create
             const result = await client.generateContent(query);

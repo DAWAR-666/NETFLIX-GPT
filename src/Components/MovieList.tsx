@@ -1,6 +1,12 @@
 import MovieCard from "./MovieCard"
-
-const MovieList = ({title, movies}) => {
+interface MovieListProps {
+    title: string;
+    movies: {
+        id: number;
+        poster_path: string;
+    }[];
+}
+const MovieList = ({title, movies}: MovieListProps) => {
   return (
     <div>
         <h1 className="text-2xl font-bold text-white px-3">{title}</h1>

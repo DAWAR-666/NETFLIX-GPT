@@ -1,5 +1,5 @@
 import { imgUrl } from "../Utils/Const"
-const MovieCard = ({poster}) => {
+const MovieCard = ({poster}: {poster: string}) => {
   if(!poster){
     return null;
   }

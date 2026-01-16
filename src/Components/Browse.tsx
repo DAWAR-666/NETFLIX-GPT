@@ -5,11 +5,12 @@ import MainCont from "./MainCont"
 import SecCont from "./SecCont"
 import { useSelector } from "react-redux"
 import Gpt from "./Gpt"
+import type { RootState } from "../Utils/appStore"
 
 
 const Browse = () => {
   useNowPlaying();
-  const gptView=useSelector(store=>store.gptview.GptButton);
+  const gptView=useSelector((store:RootState)=>store.gptview.GptButton);
   
   return (
     
