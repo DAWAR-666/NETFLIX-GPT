@@ -6,7 +6,7 @@ import GptSuggestions from "./GptSuggestions"
 const Gpt = () => {
   return (
     <div>
-        <div className="absolute ">
+        <div className="fixed ">
             <img src={bgImg} alt="bgImg" className="h-screen w-screen" />
         </div>
         <div className="relative bg-linear-to-t from-black/30 to-black/70 h-screen">

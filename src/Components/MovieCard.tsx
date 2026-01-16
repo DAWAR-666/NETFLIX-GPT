@@ -1,5 +1,8 @@
 import { imgUrl } from "../Utils/Const"
 const MovieCard = ({poster}) => {
+  if(!poster){
+    return null;
+  }
 
   return (
     <div className="m-2 shrink-0">
