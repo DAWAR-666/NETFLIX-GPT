@@ -9,3 +9,4 @@ export const APIoptions = {
   }
 };
 export const imgUrl:string="https://image.tmdb.org/t/p/w500";
+export const gptApiKey:string="AIzaSyCPtQAXFeUhK-x1MPVizO7tNv2TZmWQ7wA";
