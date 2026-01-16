@@ -15,7 +15,8 @@ const GptSearchBar = () => {
         return json.results;
     };
 
-    const handleGptSearch = async () => {
+    const handleGptSearch = async (e) => {
+        e.preventDefault();
 
         const query = "act as a movie recommendation engine and recommend only 5 movies based on the user's query: " + searchText?.current?.value + ". only respond with the movie titles separated by commas.and only give 5 titles.";
         searchText.current.value = "";
