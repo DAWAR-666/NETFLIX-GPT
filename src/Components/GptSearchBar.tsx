@@ -3,15 +3,24 @@ import { useRef } from "react"
 
 const GptSearchBar = () => {
     const searchText=useRef(null);
-    const handleGptSearch = async() => {
-        const gptResult=await client.chat.completions.create({
-            model: 'gemini-3-flash-preview',
-            messages: [
-                { role: 'user', content: 'Are semicolons optional in JavaScript?' },
-            ],
-        });
-        console.log(gptResult.choices[0].message.content);
-    }
+
+
+    const handleGptSearch = async () => {
+
+        const query = "act as a movie recommendation engine and recommend only 5 movies based on the user's query: " + searchText?.current?.value + ". only respond with the movie titles separated by commas.and only give 5 titles.";
+        searchText.current.value = "";
+        try {
+            // Change: Use generateContent instead of chat.completions.create
+            const result = await client.generateContent(query);
+            const response = await result.response;
+            const text = response.text();
+            const movieResult=text.split(",");
+            console.log(text);
+        } catch (error) {
+            console.error("Gemini SDK Error:", error);
+        }
+        
+    };
   return (
     <div className="pt-[10%] flex justify-center ">
         

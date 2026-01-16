@@ -1,10 +1,12 @@
-import OpenAI from 'openai';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { gptApiKey } from '../Utils/Const';
 
-const client = new OpenAI({
-  apiKey: gptApiKey,
-  baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
-  dangerouslyAllowBrowser: true,
+// 1. Initialize the Google Generative AI with your API Key
+const genAI = new GoogleGenerativeAI(gptApiKey);
+
+// 2. Specify the model you want to use (e.g., gemini-1.5-flash)
+const client = genAI.getGenerativeModel({ 
+    model: "gemini-3-flash-preview",
 });
 
 export default client;
