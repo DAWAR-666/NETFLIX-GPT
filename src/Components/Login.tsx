@@ -66,16 +66,16 @@ const Login = () => {
         <div>
             <Header/>
             <div className="absolute">
-                <img src={bgImg} alt="bgImg" />
+                <img src={bgImg} alt="bgImg" className="object-cover w-screen h-screen" />
             </div>
-            <form onSubmit={(e)=>{e.preventDefault()}} className="w-3/12 absolute bg-black/75 text-white my-30 mx-auto left-0 right-0  p-10 rounded-lg">
-                <h1 className="text-3xl font-bold my-4" >{isSignedIn ? "Sign In" : "Sign Up"}</h1>
+            <form onSubmit={(e)=>{e.preventDefault()}} className="w-9/12 md:w-3/12 absolute bg-black/75 text-white my-30 mx-auto left-0 right-0 p-5 md:p-10 rounded-lg">
+                <h1 className="text-xl md:text-3xl font-bold my-2 md:my-4" >{isSignedIn ? "Sign In" : "Sign Up"}</h1>
                 {!isSignedIn && (<input 
                     ref={name}
                     type="text" 
                     placeholder="Full Name" 
-                    className="p-4 
-                                my-4 
+                    className="p-2 md:p-4 
+                                my-2 md:my-4 
                                 mx-auto 
                                 w-full 
                                 cursor-pointer 
@@ -85,8 +85,8 @@ const Login = () => {
                     ref={mail}
                     type="text" 
                     placeholder="Email Address" 
-                    className="p-4 
-                                my-4 
+                    className="p-2 md:p-4 
+                                my-2 md:my-4 
                                 mx-auto 
                                 w-full 
                                 cursor-pointer 
@@ -96,12 +96,12 @@ const Login = () => {
                     ref={pswd}
                     type="password" 
                     placeholder="Password" 
-                    className="p-4 my-4 mx-auto w-full cursor-pointer bg-gray-700 rounded-lg"/>
+                    className="p-2 md:p-4 my-2 md:my-4 mx-auto w-full cursor-pointer bg-gray-700 rounded-lg"/>
                 <p className="text-red-500">{errorMsg}</p>
                 <button 
                     type="button"
-                    className="p-6 
-                                my-4 
+                    className="p-3 md:p-6 
+                                my-3 md:my-4 
                                 mx-auto 
                                 bg-red-900 
                                 rounded-lg 
