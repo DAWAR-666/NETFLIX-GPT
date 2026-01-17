@@ -5,8 +5,8 @@ const MovieCard = ({poster}: {poster: string}) => {
   }
 
   return (
-    <div className="m-2 shrink-0">
-        <img className="w-40 rounded-md " 
+    <div className="m-1 md:m-2 shrink-0">
+        <img className="w-25 md:w-40 rounded-md " 
         src={imgUrl+poster} 
         alt={poster} />
     </div>
