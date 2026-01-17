@@ -41,16 +41,16 @@ useEffect(()=>{
     },[])
     return (
         
-        <div className="absolute px-8 py-2 bg-linear-to-b from-black w-full z-10 flex justify-between">
+        <div className="absolute px-4 md:px-8 py-2 bg-linear-to-b from-black w-full z-10 flex justify-between">
             <img src= {nLogo} alt="logo"
-            className="w-48 " />
-        { user &&(<div className="my-3 mx-10 flex">
-          <button className="mx-3 bg-red-400 rounded-lg p-2 h-10 cursor-pointer"
+            className="w-30 flex md:w-48 " />
+        { user &&(<div className="my-3 mx-2 md:mx-10 flex">
+          <button className="mx-1 md:mx-3 bg-red-400 rounded-lg p-2 h-7 md:h-10 cursor-pointer text-sm md:text-lg"
               onClick={handleGptPage}>
               {showgptbtn ? "HOME" : "GPT Search"}
             </button>
-          <img className="w-10 h-10 cursor-pointer" src={userLogo} alt="userlogo" />
-          <button className="mx-3 bg-red-400 rounded-lg p-2 h-10 cursor-pointer"
+          <img className="w-7 h-7 md:w-10 md:h-10 cursor-pointer" src={userLogo} alt="userlogo" />
+          <button className="mx-1 md:mx-3 bg-red-400 rounded-lg p-2 h-7 md:h-10 cursor-pointer text-sm md:text-lg"
           onClick={handleSignOut}>SIGN OUT</button>
         </div>)}
         </div>
